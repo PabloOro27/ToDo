@@ -1,0 +1,46 @@
+.todo-counter{
+    text-align: left;
+    padding: 0 48px 0 48px;
+    background-color: #EEEEEE;
+}
+h1{
+    margin: 0;
+    font-size: 24px;
+}
+h1 span{
+    color: #CBB279;
+}
+.todo-counter .counter{
+    font-family: 'Teko', sans-serif;
+}
+h2, h3{
+    margin: 0;
+    font-size: 2.7rem;
+    font-weight: 500;
+}
+h3 span{
+    color: #CBB279;
+}
+.cajas{
+    background-color: white;
+    padding: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+}
+.cajas .caja-izquierda{
+    width: 50%;
+    background-color: #EEEEEE;
+    border-radius: 0 0 150% 85%;
+}
+.cajas .caja-derecha{
+    width: 50%;
+    background-color: #EEEEEE;
+}
+.caja-derecha div{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 80% 90% 0 0;
+}

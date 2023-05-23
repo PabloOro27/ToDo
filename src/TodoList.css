@@ -1,0 +1,12 @@
+ul{ 
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 24px 60px;
+    padding: 0;
+}
+@media screen and (max-width: 768px){
+    ul{
+        margin: 24px 8px;
+    }
+}

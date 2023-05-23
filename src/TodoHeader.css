@@ -1,0 +1,23 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2.2rem 3.2rem;
+    background-color: #EEEEEE;
+}
+.img-container i{
+    font-size: 4rem;
+    color: #537188;
+}
+.agregar button{
+    background-color: transparent;
+    border: none;
+    color: #537188;
+    font-size: 4rem;
+    width: 3rem;
+    height: 3rem;
+    font-weight: bold;
+}
+.agregar button:hover{
+    color: #CBB279;
+}
