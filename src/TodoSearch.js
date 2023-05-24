@@ -1,12 +1,20 @@
 import React from 'react';
+import { useState } from 'react';
 import './TodoSearch.css';
 
-const TodoSearch = () => {
+const TodoSearch = ({searchValue, setSearchValue}) => {
     return (
         <div className='todo-search'>
             <h1>Buscar TODOs</h1>
-            <input type="text" placeholder="Buscar" />
-            <i class="bi bi-search"></i>
+            <input 
+            type="text" 
+            placeholder="Buscar" 
+            value={searchValue}
+            onChange={(event) => {
+                setSearchValue(event.target.value);
+            }}
+            />
+            <i className="bi bi-search"></i>
         </div>
     );
 };

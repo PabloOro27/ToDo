@@ -5,7 +5,7 @@ function TodoItem({text}){
   return (
     <li>
       <div>
-        <i class="bi bi-check-lg"></i>
+        <i className="bi bi-check-lg"></i>
         <p>{text}</p>
       </div>
       <span>X</span>

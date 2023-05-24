@@ -5,10 +5,11 @@ const TodoHeader = () => {
     return (
         <nav>
             <div className="img-container">
-                <i class="bi bi-person-circle"></i>
+                <i className="bi bi-person-circle"></i>
             </div>
             <div className='agregar'>
-                <button>
+                <button className='create-todo'
+                onClick={() => console.log('hiciste click')}>
                     +
                 </button>
             </div>
