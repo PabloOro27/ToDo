@@ -33,3 +33,15 @@ li span:hover{
 li div i:hover{
     color: rgb(99, 202, 99);
 }
+
+/* activar el boton de ckeck*/
+.Icon-check-active{
+    color: rgb(15, 239, 15);
+}
+.TodoItem-p-complete{
+    text-decoration: line-through;
+    color: white;
+}
+.TodoItem-complete{
+    background-color: #CBB279;;
+}

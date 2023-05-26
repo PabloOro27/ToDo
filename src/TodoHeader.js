@@ -1,7 +1,7 @@
 import React from 'react';
-import './TodoHeader.css';
+import './styles/TodoHeader.css';
 
-const TodoHeader = () => {
+const TodoHeader = (props) => {
     return (
         <nav>
             <div className="img-container">
@@ -9,7 +9,7 @@ const TodoHeader = () => {
             </div>
             <div className='agregar'>
                 <button className='create-todo'
-                onClick={() => console.log('hiciste click')}>
+                onClick={() => props.setVisible(true)}>
                     +
                 </button>
             </div>

@@ -1,14 +1,35 @@
 import React from 'react';
-import './TodoItem.css';
+import './styles/TodoItem.css';
 
-function TodoItem({text}){
+function TodoItem(props){
   return (
-    <li>
+    <li
+      className={
+        `${props.completed && "TodoItem-complete"}`
+      }
+    >
       <div>
-        <i className="bi bi-check-lg"></i>
-        <p>{text}</p>
+        <i 
+          className={
+            `bi bi-check-lg 
+            ${props.completed && "Icon-check-active"}`
+          }
+          onClick={props.onComplete}
+        >
+        </i> 
+        <p
+          className={
+            `${props.completed && "TodoItem-p-complete"}`
+        }>
+          {props.text}
+        </p>
       </div>
-      <span>X</span>
+      <span
+        className='icon-delete'
+        onClick={props.onDelete}
+      >
+        X
+      </span>
     </li>
   );
 }
