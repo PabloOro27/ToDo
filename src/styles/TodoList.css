@@ -5,6 +5,13 @@ ul{
     margin: 24px 60px;
     padding: 0;
 }
+.spinner-border {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+}
 @media screen and (max-width: 768px){
     ul{
         margin: 24px 8px;

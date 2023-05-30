@@ -33,6 +33,9 @@ li span:hover{
 li div i:hover{
     color: rgb(99, 202, 99);
 }
+li div p{
+    margin: 0;
+}
 
 /* activar el boton de ckeck*/
 .Icon-check-active{

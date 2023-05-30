@@ -1,28 +1,49 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 const useLocalStorage = (itemName, initialValue) => {
-    let localStorageItem = localStorage.getItem(itemName);
-    let parsedItem;
+   const [item, setItem] = useState(initialValue);
+   const [loading, setLoading] = useState(true); //estado de carga
+   const [error, setError] = useState(false); // estado de error
+    
+    // useEffect
+    useEffect(() => {
+      setTimeout(() => {
+        try{
+          let localStorageItem = localStorage.getItem(itemName);
+          let parsedItem;
 
-    if (!localStorageItem) {
-        localStorage.setItem(itemName, JSON.stringify(initialValue));
-        parsedItem = [];
-    }else{
-        parsedItem = JSON.parse(localStorageItem);
-    }
+          if (!localStorageItem) {
+            localStorage.setItem(itemName, JSON.stringify(initialValue));
+            parsedItem = initialValue;
+          }else{
+            parsedItem = JSON.parse(localStorageItem);
+            setItem(parsedItem);
+          }
 
-    const [item, setItem] = useState(parsedItem);
+          setLoading(false);
+        }catch(error){
+          setLoading(false);
+          setError(true);  
+        }
+      }, 1500);
+    }, []);
+
     // guardar todos en local storage
-  const saveItem = (newItem) => {
+    const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);  
   };
 
-  return[item, saveItem];
+  return {
+    item, 
+    saveItem, 
+    loading,
+    error
+  };
 }; 
-
 export { useLocalStorage };
+
 // ----------------------------------------------
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: true },

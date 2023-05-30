@@ -1,19 +1,24 @@
 import React from 'react';
 import { useState } from 'react';
 import './styles/App.css';
-import { TodoCounter } from './TodoCounter';
-import { TodoItem } from './TodoItem';
-import TodoSearch from './TodoSearch'; //otra forma de importar
-import TodoList from './TodoList';
-import TodoHeader from './TodoHeader';
-import TodoNew from './TodoNew';
+import { TodoCounter } from '../src/components/TodoCounter';
+import { TodoItem } from './components/TodoItem';
+import TodoSearch from './components/TodoSearch'; //otra forma de importar
+import TodoList from './containers/TodoList';
+import TodoHeader from './components/TodoHeader';
+import TodoNew from './components/TodoNew';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() { 
   // estado de boton crear nuevop todo 
   const [visible, setVisible] = useState(false); // [estado, funcion que modifica el estado 
-  // estado de los todos
-  const [todos, saveTodos] = useLocalStorage('TODO_V1', []);
+  // estado de los todos recibidos es useLocalStorage
+  const {
+    item: todos, 
+    saveItem: saveTodos, 
+    loading,
+    error
+  } = useLocalStorage('TODO_V1', []);
   // ----------------------------------------------
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length; 
@@ -46,23 +51,27 @@ function App() {
   // ----------------------------------------------
   // crear nuevos todos
   const CreateNewTask = (text) => {
-          let newTodos = [...todos];
-          const todo = {
-            text: text,
-            completed: false,
-            id: 0,
-          };
-
-          if (newTodos.length === 0) {
-            todo.id = 1;
-            newTodos.push(todo);
-            saveTodos(newTodos);
-          } else {
-            todo.id = newTodos[newTodos.length - 1].id + 1;
-            newTodos.push(todo);
-            saveTodos(newTodos);
-          }
+    if (text === '') {
+      // si esta vacio el texto no pasa nada 
+    }else{
+      let newTodos = [...todos];
+      const todo = {
+        text: text,
+        completed: false,
+        id: 0,
       };
+
+      if (newTodos.length === 0) {
+        // todo.id = 1;
+        newTodos.push(todo);
+        saveTodos(newTodos);
+      } else {
+        // todo.id = newTodos[newTodos.length - 1].id + 1;
+        newTodos.push(todo);
+        saveTodos(newTodos);
+      }
+    }
+  };
   return (
     //Fragment es un componente de React que no se renderiza, solo sirve para agrupar elementos
     <React.Fragment> 
@@ -85,6 +94,15 @@ function App() {
       />
       
       <TodoList> 
+        {loading && 
+        // <p>Cargando...</p>
+        <div className="spinner-border" role="status">
+          <span className="sr-only"></span>
+        </div>
+        }
+        {error && <p>Hubo un error...</p>}
+        {(!loading && searchedTodos.length === 0) && <p>Crea tu primer TODO</p>}
+        {/* iterando en le array de todos */}
         {searchedTodos.map(todo => (
           <TodoItem 
             key={todo.text} 
