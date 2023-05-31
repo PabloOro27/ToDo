@@ -1,16 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
-import './styles/App.css';
-import { TodoCounter } from '../src/components/TodoCounter';
-import { TodoItem } from './components/TodoItem';
-import TodoSearch from './components/TodoSearch'; //otra forma de importar
-import TodoList from './containers/TodoList';
-import TodoHeader from './components/TodoHeader';
-import TodoNew from './components/TodoNew';
-import { useLocalStorage } from './hooks/useLocalStorage';
+import AppUi from './AppUi';
+import { useState } from 'react'; 
+import { useLocalStorage} from './hooks/useLocalStorage';
 
-function App() { 
-  // estado de boton crear nuevop todo 
+const App = () => {
+     // estado de boton crear nuevop todo 
   const [visible, setVisible] = useState(false); // [estado, funcion que modifica el estado 
   // estado de los todos recibidos es useLocalStorage
   const {
@@ -24,10 +18,12 @@ function App() {
   const totalTodos = todos.length; 
   // estado de busqueda de todos
   const [searchValue, setSearchValue] = useState('');
-  // console.log('los usuarios buscan todos de ' + searchValue);
   const searchedTodos = todos.filter(
-    todo => 
-      todo.text.toLowerCase().includes(searchValue.toLowerCase())
+    (todo) =>{ 
+        const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
+    }
     );
 
 // completar todos
@@ -49,7 +45,7 @@ function App() {
     saveTodos(newTodos);
   };
   // ----------------------------------------------
-  // crear nuevos todos
+  // // crear nuevos todos
   const CreateNewTask = (text) => {
     if (text === '') {
       // si esta vacio el texto no pasa nada 
@@ -72,49 +68,23 @@ function App() {
       }
     }
   };
-  return (
-    //Fragment es un componente de React que no se renderiza, solo sirve para agrupar elementos
-    <React.Fragment> 
-      <TodoHeader
-        setVisible = {setVisible} 
-        visible = {visible}
-      />
-      <TodoNew 
-        setVisible = {setVisible} 
-        visible = {visible}
-        CreateNewTask = {CreateNewTask} 
-      />
-      <TodoCounter 
-        completed={completedTodos} 
-        total={totalTodos} 
-      />
-      <TodoSearch 
-        searchValue={searchValue} 
-        setSearchValue={setSearchValue}
-      />
-      
-      <TodoList> 
-        {loading && 
-        // <p>Cargando...</p>
-        <div className="spinner-border" role="status">
-          <span className="sr-only"></span>
-        </div>
-        }
-        {error && <p>Hubo un error...</p>}
-        {(!loading && searchedTodos.length === 0) && <p>Crea tu primer TODO</p>}
-        {/* iterando en le array de todos */}
-        {searchedTodos.map(todo => (
-          <TodoItem 
-            key={todo.text} 
-            text={todo.text}
-            completed={todo.completed}
-            onComplete= {() => completeTodo(todo.text)}
-            onDelete= {() => deleteTodo(todo.text)}
-          />
-        ))}
-      </TodoList>
-    </React.Fragment>
-  );
-}
+  // ----------------------------------------------
+    return (
+        <AppUi
+            completedTodos={completedTodos}
+            totalTodos={totalTodos}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            searchedTodos={searchedTodos}
+            completeTodo={completeTodo}
+            deleteTodo={deleteTodo}
+            CreateNewTask={CreateNewTask}
+            visible={visible}
+            setVisible={setVisible}
+            loading={loading}
+            error={error}
+        />
+    );
+};
 
 export default App;

@@ -28,7 +28,7 @@ function TodoCounter({total, completed}){
   );
 }
 
-export { TodoCounter };
+export default TodoCounter;
 
 
 // ---------------otra forma de hacerlo----------------
