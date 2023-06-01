@@ -1,7 +1,13 @@
-import React from 'react';
+import {React, useContext} from 'react';
+import { TodoContext } from '../context/TodoContext';
 import '../styles/TodoSearch.css';
 
-const TodoSearch = ({searchValue, setSearchValue}) => {
+const TodoSearch = () => {
+    // useContext
+    const{
+        searchValue,
+        setSearchValue,
+    } = useContext(TodoContext);
     return (
         <div className='todo-search'>
             <h1>Buscar TODOs</h1>

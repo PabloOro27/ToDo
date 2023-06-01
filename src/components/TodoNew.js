@@ -1,13 +1,20 @@
-import React from 'react';
-import { useState } from 'react';
+import {React, useState, useContext } from 'react';
+import { TodoContext } from '../context/TodoContext';
 import '../styles/TodoNew.css';
 
-const TodoNew = ({setVisible, visible, setTodos, todos, CreateNewTask}) => {
+const TodoNew = () => {
+    //useContext
+    const {
+        setVisible,
+        visible,
+        CreateNewTask,
+    } = useContext(TodoContext);
+    // useState
     const [inputValue, setInputValue] = useState('');
 
     const closeTodo = () => {
-        setVisible(false);
         setInputValue('');
+        setVisible(false);
     };
 // ----------------------------------------------
     const CreateTodo = (event) => {

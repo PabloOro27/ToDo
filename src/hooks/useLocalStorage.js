@@ -26,7 +26,7 @@ const useLocalStorage = (itemName, initialValue) => {
           setLoading(false);
           setError(true);  
         }
-      }, 1500);
+      }, 2000);
     }, []);
 
     // guardar todos en local storage
