@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Users/Pablo/Documents/2-%20Clases%20Platzi/React/curso-react-intro/build/static/css/main.df7a3981.css",
+    "main.js": "/Users/Pablo/Documents/2-%20Clases%20Platzi/React/curso-react-intro/build/static/js/main.02e3bce5.js",
+    "index.html": "/Users/Pablo/Documents/2-%20Clases%20Platzi/React/curso-react-intro/build/index.html",
+    "main.df7a3981.css.map": "/Users/Pablo/Documents/2-%20Clases%20Platzi/React/curso-react-intro/build/static/css/main.df7a3981.css.map",
+    "main.02e3bce5.js.map": "/Users/Pablo/Documents/2-%20Clases%20Platzi/React/curso-react-intro/build/static/js/main.02e3bce5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df7a3981.css",
+    "static/js/main.02e3bce5.js"
+  ]
+}
