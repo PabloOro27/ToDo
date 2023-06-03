@@ -11,6 +11,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeply": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,5 +32,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/Users/Pablo/Documents/2- Clases Platzi/React/curso-react-intro/build/"
+  "homepage": "https://pablooro27.github.io/ToDo",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }
